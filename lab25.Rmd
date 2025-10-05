@@ -31,7 +31,10 @@ install.packages("tidyverse")
 #instalar paquete de datos
 
 install.packages("remotes")
+```{r}
 remotes::install_github("cienciadedatos/datos")
+
+```
 
 install.packages("datos")
 
