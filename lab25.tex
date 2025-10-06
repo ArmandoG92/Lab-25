@@ -1,0 +1,329 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={lab\_25\_md},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{lab\_25\_md}
+\author{}
+\date{\vspace{-2.5em}2025-10-05}
+
+\begin{document}
+\maketitle
+
+Hecho con gusto por Carla Carolina Pérez Hernández (UAEH) Alumno: Luis
+Armando González Arellano
+
+LABORATORIO - Tidy data -datos ordenados- PARTE 1,2 y 3.
+
+\subsection{Objetivo: Introducción práctica a los datos ordenados (o
+tidy data) y a las herramientas que provee el paquete
+tidyr.}\label{objetivo-introducciuxf3n-pruxe1ctica-a-los-datos-ordenados-o-tidy-data-y-a-las-herramientas-que-provee-el-paquete-tidyr.}
+
+En este ejercicio vamos a: 1. Cargar datos (tibbles) 2. Converir
+nuestros tiblles en dataframes (para su exportación) 3. Exportar
+dataframes originales 4. Pivotar tabla 4a 5. Exportar resutltado (TABLA
+PIVOTANTE) 6. Separar y unir tablas
+
+\#LABORATORIO: Tidy data (datos ordenados) 1 \#
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#
+\#Prerrequisitos \#instalar paquete tidyverse
+install.packages(``tidyverse'')
+
+\#instalar paquete de datos
+
+install.packages(``remotes'')
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"cienciadedatos/datos"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Skipping install of 'datos' from a github remote, the SHA1 (7f69393d) has not changed since last install.
+##   Use `force = TRUE` to force installation
+\end{verbatim}
+
+install.packages(``datos'')
+
+\#Cargar paquete tidyverse
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+## v dplyr     1.1.4     v readr     2.1.5
+## v forcats   1.0.1     v stringr   1.5.2
+## v ggplot2   4.0.0     v tibble    3.3.0
+## v lubridate 1.9.4     v tidyr     1.3.1
+## v purrr     1.1.0     
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+## i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+\end{verbatim}
+
+\#Cargar paquete de datos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(datos)}
+\end{Highlighting}
+\end{Shaded}
+
+\#tabla 1 hasta tabla 4b \#ver datos como tibble
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos}\SpecialCharTok{::}\NormalTok{ tabla1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 4
+##   pais        anio  casos  poblacion
+##   <chr>      <dbl>  <dbl>      <dbl>
+## 1 Afganistán  1999    745   19987071
+## 2 Afganistán  2000   2666   20595360
+## 3 Brasil      1999  37737  172006362
+## 4 Brasil      2000  80488  174504898
+## 5 China       1999 212258 1272915272
+## 6 China       2000 213766 1280428583
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos}\SpecialCharTok{::}\NormalTok{ tabla2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 12 x 4
+##    pais        anio tipo          cuenta
+##    <chr>      <dbl> <chr>          <dbl>
+##  1 Afganistán  1999 casos            745
+##  2 Afganistán  1999 población   19987071
+##  3 Afganistán  2000 casos           2666
+##  4 Afganistán  2000 población   20595360
+##  5 Brasil      1999 casos          37737
+##  6 Brasil      1999 población  172006362
+##  7 Brasil      2000 casos          80488
+##  8 Brasil      2000 población  174504898
+##  9 China       1999 casos         212258
+## 10 China       1999 población 1272915272
+## 11 China       2000 casos         213766
+## 12 China       2000 población 1280428583
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos}\SpecialCharTok{::}\NormalTok{ tabla3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 3
+##   pais        anio tasa             
+##   <chr>      <dbl> <chr>            
+## 1 Afganistán  1999 745/19987071     
+## 2 Afganistán  2000 2666/20595360    
+## 3 Brasil      1999 37737/172006362  
+## 4 Brasil      2000 80488/174504898  
+## 5 China       1999 212258/1272915272
+## 6 China       2000 213766/1280428583
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos}\SpecialCharTok{::}\NormalTok{ tabla4a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 3
+##   pais       `1999` `2000`
+##   <chr>       <dbl>  <dbl>
+## 1 Afganistán    745   2666
+## 2 Brasil      37737  80488
+## 3 China      212258 213766
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{datos}\SpecialCharTok{::}\NormalTok{ tabla4b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 3
+##   pais           `1999`     `2000`
+##   <chr>           <dbl>      <dbl>
+## 1 Afganistán   19987071   20595360
+## 2 Brasil      172006362  174504898
+## 3 China      1272915272 1280428583
+\end{verbatim}
+
+\#ver datos como dataframe
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df1 }\OtherTok{\textless{}{-}}  \FunctionTok{data\_frame}\NormalTok{(tabla1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: `data_frame()` was deprecated in tibble 1.1.0.
+## i Please use `tibble()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df2 }\OtherTok{\textless{}{-}}  \FunctionTok{data\_frame}\NormalTok{(tabla2)}
+\NormalTok{df3 }\OtherTok{\textless{}{-}}  \FunctionTok{data\_frame}\NormalTok{(tabla3)}
+\NormalTok{df4a }\OtherTok{\textless{}{-}}  \FunctionTok{data\_frame}\NormalTok{(tabla4a)}
+\NormalTok{df4b }\OtherTok{\textless{}{-}}  \FunctionTok{data\_frame}\NormalTok{(tabla4b)}
+\end{Highlighting}
+\end{Shaded}
+
+\#exportar los dataframes originales
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write.csv}\NormalTok{(df1, }\AttributeTok{file=} \StringTok{"df1.csv"}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(df2, }\AttributeTok{file=} \StringTok{"df2.csv"}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(df3, }\AttributeTok{file=} \StringTok{"df3.csv"}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(df4a, }\AttributeTok{file=} \StringTok{"df4a.csv"}\NormalTok{)}
+\FunctionTok{write.csv}\NormalTok{(df4b, }\AttributeTok{file=} \StringTok{"df4b.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+vignette(``tibble'') \#explicación de tibble
+
+\section{Ordenar datos con la tabla4a
+(PIVOTAR)}\label{ordenar-datos-con-la-tabla4a-pivotar}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{t4a\_PIVOTANTE}\OtherTok{=}\NormalTok{ tabla4a }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{pivot\_longer}\NormalTok{(}\AttributeTok{cols =} \FunctionTok{c}\NormalTok{(}\StringTok{"1999"}\NormalTok{, }\StringTok{"2000"}\NormalTok{), }\AttributeTok{names\_to =} \StringTok{"anio"}\NormalTok{, }\AttributeTok{values\_to =}\StringTok{"casos"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\section{Exportar resultado: tabla
+ordenada}\label{exportar-resultado-tabla-ordenada}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{write.csv}\NormalTok{(t4a\_PIVOTANTE, }\AttributeTok{file =} \StringTok{"t4a\_PIVOTANTE.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}

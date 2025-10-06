@@ -1,0 +1,4 @@
+"0","write.csv(df4b, file= ""df4b.csv"")
+"
+"2","Error en eval(expr, p): objeto 'df4b' no encontrado
+"

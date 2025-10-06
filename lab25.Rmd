@@ -1,6 +1,8 @@
 ---
 title: "lab_25_md"
-output: pdf_document
+output:
+  html_document:
+    df_print: paged
 date: "2025-10-05"
 ---
 Hecho con gusto por Carla Carolina Pérez Hernández (UAEH)
@@ -67,7 +69,7 @@ df1 <-  data_frame(tabla1)
 df2 <-  data_frame(tabla2)
 df3 <-  data_frame(tabla3)
 df4a <-  data_frame(tabla4a)
-df5b <-  data_frame(tabla4b)
+df4b <-  data_frame(tabla4b)
 ```
 
 #exportar los dataframes originales
